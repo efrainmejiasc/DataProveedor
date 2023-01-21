@@ -1,5 +1,6 @@
 ﻿
 @{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/scriptsSite/jsLogin/jsIndex.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -8,3 +9,45 @@
     <script src="~/toaster/jquery.toaster.bootstrap.js"></script>
     <link rel="stylesheet" href="~/toaster/toastr.min.css" />
 }
+
+<div class="card" style="margin-top:5%;">
+    <div class="card-body">
+        <div class="form-horizontal" style="color:dimgray">
+            <h1 style="color:dimgray"> Acceso </h1>
+            <small class="mb-md-0 text-gray" style="color:dimgray">Hola Comenzemos</small>
+            <div class="form-group row">
+                <div class="col-md-3 text-md-right">
+                    <label class="control-label">Nombre de usuario</label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" id="userMail" name="userMail" class="form form-control" />
+                </div>
+                <div class="col-md-3 text-md-right">
+                    <label class="control-label">Password</label>
+                </div>
+                <div class="col-md-8">
+                    <input type="password" id="password" name="password" class="form form-control" />
+                </div>
+
+                <div class="col-md-3 text-md-right">
+                    <label> Confirmar &nbsp;&nbsp;&nbsp;<input type="checkbox" id="confirmar" class="form-check-input"></label><br>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-md-3 text-md-right">
+                    <label class="control-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                </div>
+                <div class="col-md-8">
+                    <input type="button" value="Aceptar" class="btn btn-success form-control" onclick="Login();" />
+                </div>
+                <div class="col-md-6 text-md-right" style="display:none;">
+                    <input type="reset" value="Cancelar" class="btn btn-danger form-control" onclick="Reset()" style="width:200px;" />
+                </div>
+            </div>
+            <div>
+                <a href="" id="registrateAqui">Registrate Aqui</a>
+            </div>
+        </div>
+    </div>
+</div>
