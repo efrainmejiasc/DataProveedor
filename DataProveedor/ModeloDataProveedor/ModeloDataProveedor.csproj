@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="IRepositories\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>

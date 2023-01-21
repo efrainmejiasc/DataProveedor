@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DatosDataProveedor.DataModel
+namespace ModeloDataProveedor.DataModel
 {
     [Table("Usuario")]
     public class Usuario
