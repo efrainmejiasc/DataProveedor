@@ -1,6 +1,4 @@
-﻿
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ModeloDataProveedor.DataModel;
 using NegocioDataProveedor.Helpers;
 using NegocioDataProveedor.IServices;
@@ -9,49 +7,49 @@ using SiteDataProveedor.Models;
 
 namespace SiteDataProveedor.Controllers
 {
-    public class LoginController : Controller
+    public class UsuarioController : Controller
     {
+
         private readonly IHttpContextAccessor _httpContext;
-        private readonly IUsuarioService _usuarioService;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IUsuarioService _usuarioService;
         private Usuario usuario;
 
-        public LoginController( IHttpContextAccessor httpContext, IUsuarioService usuarioService, IWebHostEnvironment webHostEnvironment)
+        public UsuarioController( IHttpContextAccessor httpContext, IUsuarioService usuarioService, IWebHostEnvironment webHostEnvironment)
         {
             this._httpContext = httpContext;
             this._usuarioService = usuarioService;
             this._webHostEnvironment = webHostEnvironment;
-            this.usuario = new Usuario();
 
             if (!string.IsNullOrEmpty(_httpContext.HttpContext.Session.GetString("UsuarioLogin")))
                 this.usuario = JsonConvert.DeserializeObject<Usuario>(_httpContext.HttpContext.Session.GetString("UsuarioLogin"));
-        }
 
+        }
         public IActionResult Index()
         {
             return View();
         }
 
 
-        [HttpGet]
-        public IActionResult LoginUsuario(string userMail, string password)
+        [HttpPost]
+        public IActionResult UserRegister([FromBody] Usuario usuario)
         {
             var respuesta = new RespuestaModel();
             respuesta.Estado = false;
-            respuesta.Mensaje = "No autorizado";
-            if (string.IsNullOrEmpty(userMail) || string.IsNullOrEmpty(password))
-                return Json(respuesta);
 
-            var passwordEncriptado = NegocioDataProveedor.Helpers.Helper.EnCodeBase64(userMail + password);
+            if (string.IsNullOrEmpty(usuario.Nombre))
+            {
+                respuesta.Mensaje = "Mala solicitud";
+                return Json(respuesta);
+            }
 
             try
             {
-                var gestor = this._usuarioService.GetUserData(userMail, passwordEncriptado);
-                if (gestor != null)
+                usuario = this._usuarioService.PostUsuario(usuario);
+                if (usuario.Id > 0)
                 {
                     respuesta.Estado = true;
-                    respuesta.Mensaje = "Autorizado";
-                    _httpContext.HttpContext.Session.SetString("UsuarioLogin", JsonConvert.SerializeObject(gestor));
+                    respuesta.Mensaje = "Usuario creado correctamente.";
                 }
             }
             catch (Exception ex)
@@ -63,6 +61,5 @@ namespace SiteDataProveedor.Controllers
 
             return Json(respuesta);
         }
-
     }
 }

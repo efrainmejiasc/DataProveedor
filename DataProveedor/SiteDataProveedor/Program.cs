@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using ModeloDataProveedor.DataModel;
 using ModeloDataProveedor.IRepositories;
 using ModeloDataProveedor.Repositories;
+using NegocioDataProveedor.Helpers;
 using NegocioDataProveedor.IServices;
 using NegocioDataProveedor.Services;
 using System;
@@ -46,9 +47,9 @@ builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddTransient<IUsuarioService, UsuarioService>();
 builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
-var app = builder.Build();
+AppEnviroments.log_excepcion = builder.Configuration["AppEnviroments:log_excepcion"];
 
-// Configure the HTTP request pipeline.
+var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

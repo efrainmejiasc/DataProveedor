@@ -18,8 +18,8 @@ namespace DatosGTMWeb.Filters
         {
             try
             {
-                var action = filterContext.RouteData.Values.Values.ToList()[1].ToString();
-                if (action == "UserRegister")
+                var action = filterContext.RouteData.Values.Values.ToList();
+                if (action[0].ToString() == "Index" && action[1].ToString() == "Usuario")
                     return;
 
                 base.OnActionExecuting(filterContext);

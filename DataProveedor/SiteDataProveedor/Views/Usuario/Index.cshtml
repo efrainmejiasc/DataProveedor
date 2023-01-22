@@ -1,0 +1,81 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/scriptsSite/jsUsuario/jsIndex.js"></script>
+    <script src="~/toaster/jquery.toast.js"></script>
+    <link rel="stylesheet" href="~/toaster/toastr.min.css" />
+}
+<script>
+    var urlPostUsuario = '@Url.Action("UserRegister","Usuario")';
+    var urlUserLogin = '@Url.Action("Index","Login")';
+</script>
+
+<div class="card" style="margin-top:5%;">
+    <div class="card-body">
+        <div class="form-horizontal" style="color:dimgray">
+            <div class="mx-auto" style="">
+                <h1>Registro de Usuario</h1>
+            </div>
+         
+            <div class="form-group row">
+                 <div class="col-md-4">
+                     <label>
+                         Nombre
+                     </label>
+                 </div>
+                 <div class="col-md-8">
+                    <input type="text" id="nombre" placeholder="Ingrese su nombre" class="form-control form-control-sm" />
+                 </div>
+                <div class="col-md-4">
+                    <label>
+                        Apellido
+                    </label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" id="apellido" placeholder="Ingrese su apellido" class="form-control form-control-sm" />
+                </div>
+                <div class="col-md-4">
+                    <label>
+                      Nombre de Usuario
+                    </label>
+                </div>
+                <div class="col-md-8">
+                    <input type="text" id="userName" placeholder="Ingrese un nombre de usuario" class="form-control form-control-sm" />
+                </div>
+                <div class="col-md-4">
+                    <label>
+                        Email
+                    </label>
+                </div>
+                  <div class="col-md-8">
+                    <input type="email" id="mail" placeholder="Ingrese su email" class="form-control form-control-sm" />
+                </div>
+                <div class="col-md-4">
+                    <label>
+                     Contraseña
+                    </label>
+                </div>
+                <div class="col-md-8">
+                    <input type="password" id="password" placeholder="Ingrese contraseña" class="form-control form-control-sm" />
+                </div>
+                <div class="col-md-4">
+                    <label>
+                       Confirmar Contraseña
+                    </label>
+                </div>
+                <div class="col-md-8">
+                    <input type="password" id="password2" placeholder="Confirme contraseña" class="form-control form-control-sm" />
+                </div>
+            </div>
+            <hr>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <input type="button" value="Aceptar"  class="btn btn-success form-control" onclick="PostUsuario();" />
+                </div>
+                <div class="col-md-6 text-md-right" >
+                    <input type="reset" value="Cancelar" class="btn btn-danger form-control" onclick="NavToLogin();" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
