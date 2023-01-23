@@ -31,32 +31,40 @@ function PostUsuario() {
 
     if (nombre === '') {
         toastr.warning('Debe ingresar el nombre');
+        return false;
     } else if (apellido === '') {
         toastr.warning('Debe ingresar el apellido');
+        return false;
     }
     else if (userName === '') {
         toastr.warning('Debe ingresar un nombre de usuario');
+        return false;
     }
     else if (mail === '') {
         toastr.warning('Debe ingresar una direccion de correo');
+        return false;
     }
     else if (!EmailValido(mail)) {
         toastr.warning(mail + ' no es una direccion de correo valida');
+        return false;
     }
     else if (password === '') {
         toastr.warning('Debe ingresar la contraseña');
+        return false;
     }
     else if (password != password2) {
         toastr.warning('Las contraseñas deben ser identicas');
+        return false;
+    }
+    else if (password.length < 8) {
+        toastr.warning('La contraseña debe estar formada por al menos ocho caracteres');
+        return false;
     }
 
     var mayuscula = false;
     var minuscula = false;
     var numero = false;
-    if (password.length < 8) {
-        toastr.warning('La contraseña debe estar formada por al menos ocho caracteres');
-        return false;
-    }
+ 
 
     for (var i = 0; i < password.length; i++)
     {
@@ -89,14 +97,17 @@ function PostUsuario() {
             type: "POST",
             data: JSON.stringify(usuario),
             url: urlPostUsuario,
-            contentType: "application/json",
-            success: function (data) {
-                if (data.estado) {
-                    toastr.success(data.mensaje);
+            cache: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (modelo) {
+                console.log(modelo);
+                if (modelo.estado) {
+                    toastr.success(modelo.mensaje);
                     setTimeout(NavToLogin, 2000);
                 }
                 else {
-                    toastr.error(data.mensaje);
+                    toastr.error(modelo.mensaje);
                 }
             }, error: function (jqXHR, textStatus, errorThrown) {
                 console.log(jqXHR + ' ' + textStatus + ' ' + errorThrown)

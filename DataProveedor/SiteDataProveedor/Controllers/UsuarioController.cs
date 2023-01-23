@@ -61,5 +61,12 @@ namespace SiteDataProveedor.Controllers
 
             return Json(respuesta);
         }
+
+        [HttpGet]
+        public IActionResult GetUsuarioLogger()
+        {
+            return Json(this.usuario);
+        }
+
     }
 }
