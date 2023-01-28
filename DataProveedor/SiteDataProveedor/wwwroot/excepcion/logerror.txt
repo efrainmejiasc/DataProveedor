@@ -1,2 +1,4 @@
 FECHA: 22/01/2023 21:39:56 EXCEPCION: An error occurred while saving the entity changes. See the inner exception for details.
 
+FECHA: 28/01/2023 14:37:57 EXCEPCION: An error occurred while saving the entity changes. See the inner exception for details.
+

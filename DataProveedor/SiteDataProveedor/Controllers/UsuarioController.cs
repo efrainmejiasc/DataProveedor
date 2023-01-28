@@ -1,12 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DatosGTMWeb.Filters;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata;
 using ModeloDataProveedor.DataModel;
 using NegocioDataProveedor.Helpers;
 using NegocioDataProveedor.IServices;
 using Newtonsoft.Json;
+using SiteDataProveedor.Filters;
 using SiteDataProveedor.Models;
 
 namespace SiteDataProveedor.Controllers
 {
+   
     public class UsuarioController : Controller
     {
 
@@ -23,16 +28,17 @@ namespace SiteDataProveedor.Controllers
 
             if (!string.IsNullOrEmpty(_httpContext.HttpContext.Session.GetString("UsuarioLogin")))
                 this.usuario = JsonConvert.DeserializeObject<Usuario>(_httpContext.HttpContext.Session.GetString("UsuarioLogin"));
-
         }
-        public IActionResult Index()
+
+        [CustomAuthenticationFilter(Disable = true)]
+        public IActionResult RegistroUsuario()
         {
             return View();
         }
 
 
         [HttpPost]
-        public IActionResult UserRegister([FromBody] Usuario usuario)
+        public JsonResult UserRegister([FromBody] Usuario usuario)
         {
             var respuesta = new RespuestaModel();
             respuesta.Estado = false;

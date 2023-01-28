@@ -98,8 +98,7 @@ function PostUsuario() {
             data: JSON.stringify(usuario),
             url: urlPostUsuario,
             cache: false,
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
+            contentType: 'application/json',
             success: function (modelo) {
                 console.log(modelo);
                 if (modelo.estado) {
@@ -116,7 +115,6 @@ function PostUsuario() {
     );
 
     return false;
-
 }
 
 function EmailValido(mail) {

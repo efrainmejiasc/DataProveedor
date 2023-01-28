@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/scriptsSite/jsUsuario/jsIndex.js"></script>
+    <script src="~/js/scriptsSite/jsUsuario/jsRegistroUsuario.js"></script>
     <script src="~/toaster/jquery.toast.js"></script>
     <link rel="stylesheet" href="~/toaster/toastr.min.css" />
 }
@@ -16,16 +16,16 @@
             <div class="mx-auto" style="">
                 <h1>Registro de Usuario</h1>
             </div>
-         
+
             <div class="form-group row">
-                 <div class="col-md-4">
-                     <label>
-                         Nombre
-                     </label>
-                 </div>
-                 <div class="col-md-8">
+                <div class="col-md-4">
+                    <label>
+                        Nombre
+                    </label>
+                </div>
+                <div class="col-md-8">
                     <input type="text" id="nombre" placeholder="Ingrese su nombre" class="form-control form-control-sm" />
-                 </div>
+                </div>
                 <div class="col-md-4">
                     <label>
                         Apellido
@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-md-4">
                     <label>
-                      Nombre de Usuario
+                        Nombre de Usuario
                     </label>
                 </div>
                 <div class="col-md-8">
@@ -47,12 +47,12 @@
                         Email
                     </label>
                 </div>
-                  <div class="col-md-8">
+                <div class="col-md-8">
                     <input type="email" id="mail" placeholder="Ingrese su email" class="form-control form-control-sm" />
                 </div>
                 <div class="col-md-4">
                     <label>
-                     Contraseña
+                        Contraseña
                     </label>
                 </div>
                 <div class="col-md-8">
@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-md-4">
                     <label>
-                       Confirmar Contraseña
+                        Confirmar Contraseña
                     </label>
                 </div>
                 <div class="col-md-8">
@@ -70,9 +70,9 @@
             <hr>
             <div class="form-group row">
                 <div class="col-md-6">
-                    <input type="button" value="Aceptar"  class="btn btn-success form-control" onclick="PostUsuario();" />
+                    <input type="button" value="Aceptar" class="btn btn-success form-control" onclick="PostUsuario();" />
                 </div>
-                <div class="col-md-6 text-md-right" >
+                <div class="col-md-6 text-md-right">
                     <input type="reset" value="Cancelar" class="btn btn-danger form-control" onclick="NavToLogin();" />
                 </div>
             </div>
