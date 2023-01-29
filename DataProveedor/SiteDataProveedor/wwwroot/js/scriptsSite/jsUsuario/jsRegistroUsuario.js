@@ -103,7 +103,7 @@ function PostUsuario() {
                 console.log(modelo);
                 if (modelo.estado) {
                     toastr.success(modelo.mensaje);
-                    setTimeout(NavToLogin, 2000);
+                  //  setTimeout(NavToLogin, 2000);
                 }
                 else {
                     toastr.error(modelo.mensaje);

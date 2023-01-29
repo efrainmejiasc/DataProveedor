@@ -1,5 +1,4 @@
 ﻿
-
 using ModeloDataProveedor.DataModel;
 using ModeloDataProveedor.IRepositories;
 using NegocioDataProveedor.Helpers;
@@ -27,6 +26,24 @@ namespace NegocioDataProveedor.Services
             usuario = this.usuarioRepository.GetUserData(userMail, password);
 
             return usuario;
+        }
+
+        public string ExisteUsuario(string userName , string email)
+        {
+            var respuesta = string.Empty;
+            var usuario = new Usuario();
+            usuario = this.usuarioRepository.GetUserDataBy(userName, email);
+            if (usuario != null)
+            {
+                if (userName == usuario.UserName && email == usuario.Email)
+                    respuesta = "El usuario ya se encuentra registrado";
+                else if (userName == usuario.UserName && email != usuario.Email)
+                    respuesta = "El nombre de usuario no esta disponible";
+                else if (userName != usuario.UserName && email == usuario.Email)
+                    respuesta = "El email ya se encuentra registrado";
+            }
+
+            return respuesta;
         }
 
         public Usuario PostUsuario(Usuario usuario)

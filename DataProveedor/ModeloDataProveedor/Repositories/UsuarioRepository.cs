@@ -38,5 +38,19 @@ namespace ModeloDataProveedor.Repositories
             return usuario;
         }
 
+
+        public Usuario GetUserDataBy(string userName, string email)
+        {
+            var usuario = db.Usuario.Where(x => x.Email == email || x.UserName == userName).FirstOrDefault();
+            if (usuario != null)
+            {
+                usuario.Password = string.Empty;
+                usuario.Password2 = string.Empty;
+            }
+            return usuario;
+        }
+
+    
+
     }
 }

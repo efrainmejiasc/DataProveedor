@@ -11,6 +11,8 @@ namespace NegocioDataProveedor.IServices
     public interface IUsuarioService
     {
         Usuario PostUsuario(Usuario usuario);
+        string ExisteUsuario(string userName, string email);
         Usuario GetUserData(string userMail, string password);
+
     }
 }

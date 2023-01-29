@@ -51,6 +51,12 @@ namespace SiteDataProveedor.Controllers
 
             try
             {
+                var strExisteUsuario = this._usuarioService.ExisteUsuario(usuario.UserName, usuario.Email);
+                if (!string.IsNullOrEmpty(strExisteUsuario))
+                {
+                    respuesta.Mensaje = strExisteUsuario;
+                    return Json(respuesta);
+                }
                 usuario = this._usuarioService.PostUsuario(usuario);
                 if (usuario.Id > 0)
                 {
